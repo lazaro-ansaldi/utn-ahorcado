@@ -24,6 +24,9 @@ bld/
 [Oo]bj/
 [Ll]og/
 
+# NuGet Init folder
+nuget/
+
 # Visual Studio 2015/2017 cache/options directory
 .vs/
 # Uncomment if you have tasks that create the project's static files in wwwroot
@@ -221,7 +224,7 @@ ClientBin/
 *.publishsettings
 orleans.codegen.cs
 
-# Including strong name files can present a security risk 
+# Including strong name files can present a security risk
 # (https://github.com/github/gitignore/pull/2483#issue-259490424)
 #*.snk
 
@@ -240,7 +243,6 @@ Backup*/
 UpgradeLog*.XML
 UpgradeLog*.htm
 ServiceFabricBackup/
-*.rptproj.bak
 
 # SQL Server files
 *.mdf
@@ -317,7 +319,7 @@ __pycache__/
 # OpenCover UI analysis results
 OpenCover/
 
-# Azure Stream Analytics local run output 
+# Azure Stream Analytics local run output
 ASALocalRun/
 
 # MSBuild Binary and Structured Log
@@ -326,5 +328,40 @@ ASALocalRun/
 # NVidia Nsight GPU debugger configuration file
 *.nvuser
 
-# MFractors (Xamarin productivity tool) working folder 
+# MFractors (Xamarin productivity tool) working folder
 .mfractor/
+
+##
+## FLX specific
+##
+
+# Binary output folder
+output/
+
+# Binary publish folder
+Publish/
+
+# NuGet publish folder
+NuGet/
+
+# Ignore App/Web config files
+**/App.config
+**/Web.config
+**/appsettings.json
+
+# Enterprise library config loaded from App/Web config
+**/EntLib.config
+**/appsettings.json
+**/appsettings.development.json
+
+# Always keep track of template files
+!**/*.template.config
+!**/*.template.json
+
+# Cake tools
+Build/tools/**
+!Build/tools/packages.config
+
+# Never ignore samples
+!Build/samples/**
+
