@@ -6,7 +6,7 @@ namespace Ahorcado
     {
         public bool Finalizo { get; private set; }
         public ResultadoDePartida Resultado { get; private set; }
-        public Jugador JugadorActual => Jugadores[TurnoActual];
+        private Jugador JugadorActual => Jugadores[TurnoActual];
         private Dictionary<int, Jugador> Jugadores { get; set; }
         private int TurnoActual { get; set; }
 

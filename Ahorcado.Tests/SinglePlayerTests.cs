@@ -6,26 +6,6 @@ namespace Ahorcado.Tests
     public class GameTests
     {
         [TestMethod]
-        public void CargarPalabra()
-        {
-            var testWord = "HOLA";
-            var jugador = new Jugador("TEST1", testWord);
-            var gameManager = new GameManager(jugador);
-
-            Assert.AreEqual(testWord, gameManager.JugadorActual.PalabraSecreta);
-        }
-
-        [TestMethod]
-        public void ValidarCantidad()
-        {
-            var testWord = "COMO";
-            var jugador = new Jugador("TEST1", testWord);
-            var gameManager = new GameManager(jugador);
-
-            Assert.AreEqual(testWord.Length, gameManager.JugadorActual.LongitudPalabra);
-        }
-
-        [TestMethod]
         public void ProbarLetraAcertada()
         {
             var testWord = "ANDAS";
@@ -51,31 +31,7 @@ namespace Ahorcado.Tests
             Assert.IsFalse(validarLetra);
         }
 
-        [TestMethod]
-        public void ContarErrorIntentoFallido()
-        {
-            var testWord = "ANDAS";
-            var testLetra = "E";
-            var jugador = new Jugador("TEST1", testWord);
-            var gameManager = new GameManager(jugador);
 
-            gameManager.ProbarLetra(testLetra);
-
-            Assert.IsTrue(gameManager.JugadorActual.CantidadDeErrores == 1);
-        }
-
-        [TestMethod]
-        public void ContarErrorIntentoAcertado()
-        {
-            var testWord = "ANDAS";
-            var testLetra = "A";
-            var jugador = new Jugador("TEST1", testWord);
-            var gameManager = new GameManager(jugador);
-
-            gameManager.ProbarLetra(testLetra);
-
-            Assert.IsTrue(gameManager.JugadorActual.CantidadDeErrores == 0);
-        }
 
         [TestMethod]
         public void ProbarVictoria()
