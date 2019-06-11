@@ -30,12 +30,6 @@ steps:
 
 - task: DotNetCoreCLI@2
   inputs:
-    command: build
-    arguments: 'configuration=Release'
-    projects: '**/*.csproj'
-
-- task: DotNetCoreCLI@2
-  inputs:
     command: test
     projects: '**/*Tests/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
