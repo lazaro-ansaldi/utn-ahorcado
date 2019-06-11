@@ -5,9 +5,9 @@ namespace Ahorcado
 {
     public class Jugador
     {
-        public string PalabraSecreta { get; private set; }
+        public string PalabraSecreta { get; }
+        public string Nombre { get; }
         public int LongitudPalabra => PalabraSecreta.Length;
-        public string Nombre { get; set; }
         public int CantidadDeAciertos { get; private set; }
         public int CantidadDeErrores { get; private set; }
         private Dictionary<string, bool> LetrasArriesgadas { get; set; }
@@ -21,6 +21,8 @@ namespace Ahorcado
 
         public bool ContieneLetra(string letra)
         {
+            // Validar si la palabra ya fue arriesgada o no
+
             //if (PalabrasArriesgadas.ContainsKey(letra))
             //{
             //    var resultadoLetra = PalabrasArriesgadas[letra];
@@ -43,6 +45,7 @@ namespace Ahorcado
             }
         }
 
+        // Refactor: el input es un char
         public bool ArriesgarPalabra(string palabra)
         {
             return palabra.ToUpperInvariant() == PalabraSecreta;
