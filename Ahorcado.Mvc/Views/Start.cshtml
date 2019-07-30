@@ -1,0 +1,48 @@
+﻿@model Ahorcado.Mvc.Models.StartModel
+@{
+    ViewData["Title"] = "Game";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="panel panel-default" style="margin-top:20px;">
+        <div class="panel-heading">
+            <div class="panel-title">Ahorcado</div>
+        </div>
+        @using (Html.BeginForm("Start", "Home", FormMethod.Post))
+        {
+            <div class="panel-body form-horizontal">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            @Html.LabelFor(m => m.PlayerName)
+                        </div>
+                        <div class="col-sm-3">
+                            @Html.TextBoxFor(m => m.PlayerName, new Dictionary<String, object>
+                                {
+                                    { "class", "form-control" },
+                                    { "data-bind", "value:WordToGuess, enable:enableWordToGuess" },                                
+                                })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            @Html.LabelFor(m => m.SecretWord)
+                        </div>
+                        <div class="col-sm-3">
+                            @Html.TextBoxFor(m => m.SecretWord, new Dictionary<String, object>
+                                {
+                                    { "class", "form-control" },
+                                    { "type", "password" },
+                                })
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="submit" id="btnStartGame" value="Start" class="btn btn-info" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

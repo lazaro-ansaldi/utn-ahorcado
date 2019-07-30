@@ -1,3 +1,4 @@
+using Ahorcado.Core;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Ahorcado.Tests

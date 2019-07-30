@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Ahorcado\Ahorcado.csproj" />
+    <ProjectReference Include="..\Ahorcado.Core\Ahorcado.Core.csproj" />
   </ItemGroup>
 
 </Project>

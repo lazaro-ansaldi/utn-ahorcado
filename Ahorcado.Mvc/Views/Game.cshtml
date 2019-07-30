@@ -1,0 +1,54 @@
+﻿@model Ahorcado.Mvc.Models.GameModel
+@{
+    ViewData["Title"] = "Game";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="panel panel-default" style="margin-top:20px;">
+        <div class="panel-heading">
+            <div class="panel-title">Ahorcado - Juego</div>
+        </div>
+        @using (Html.BeginForm("TryLetter", "Game", FormMethod.Post))
+        {
+            <div class="panel-body form-horizontal">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <span>Letras Acertadas: @ViewBag.LetrasAcertadas</span>
+                        </div>
+                    </div>
+                    @if (ViewBag.Finalizo)
+                    {
+                        <div class="form-group">
+                            <div class="col-sm-3">
+                                <span>Letras Acertadas: @ViewBag.Message</span>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="panel-body form-horizontal">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            @Html.LabelFor(m => m.LetterToTry)
+                        </div>
+                        <div class="col-sm-3">
+                            @Html.TextBoxFor(m => m.LetterToTry, new Dictionary<String, object>
+                                {
+                                    { "class", "form-control" },
+                                    { "maxlength", "1" }
+                                })
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="submit" id="btnStartGame" value="Probar" class="btn btn-info" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
