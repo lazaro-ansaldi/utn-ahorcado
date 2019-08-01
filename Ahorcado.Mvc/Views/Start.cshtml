@@ -18,10 +18,11 @@
                             @Html.LabelFor(m => m.PlayerName)
                         </div>
                         <div class="col-sm-3">
-                            @Html.TextBoxFor(m => m.PlayerName, new Dictionary<String, object>
+                            @Html.TextBoxFor(m => m.PlayerName, new Dictionary<string, object>
                                 {
                                     { "class", "form-control" },
-                                    { "data-bind", "value:WordToGuess, enable:enableWordToGuess" },                                
+                                    { "data-bind", "value:WordToGuess, enable:enableWordToGuess" },    
+                                    {"id", "playerName" }
                                 })
                         </div>
                     </div>
@@ -30,10 +31,11 @@
                             @Html.LabelFor(m => m.SecretWord)
                         </div>
                         <div class="col-sm-3">
-                            @Html.TextBoxFor(m => m.SecretWord, new Dictionary<String, object>
+                            @Html.TextBoxFor(m => m.SecretWord, new Dictionary<string, object>
                                 {
                                     { "class", "form-control" },
                                     { "type", "password" },
+                                    { "id", "secretWord" }
                                 })
                         </div>
                         <div class="col-sm-2">
