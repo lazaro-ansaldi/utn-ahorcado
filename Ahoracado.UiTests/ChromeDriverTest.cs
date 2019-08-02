@@ -12,10 +12,10 @@ namespace Ahoracado.UiTests
         #region Page Controls
         private IWebElement TxtNombreJugador => _driver.FindElementByName("PlayerName");
         private IWebElement TxtSecretWord => _driver.FindElementByName("SecretWord");
-        private IWebElement BtnStart => _driver.FindElementByName("Start");
+        private IWebElement BtnStart => _driver.FindElementById("btnStartGame");
         private IWebElement TxtTryLetter => _driver.FindElementByName("LetterToTry");
-        private IWebElement BtnTryLetter => _driver.FindElementByName("BtnStartGame");
-        private IWebElement TxtLetrasAcertadas => _driver.FindElementByName("LetrasAcertadas");
+        private IWebElement BtnTryLetter => _driver.FindElementById("btnStartGame");
+        private IWebElement TxtLetrasAcertadas => _driver.FindElementByName("LetterToTry");
         #endregion
 
         [TestInitialize]
@@ -25,7 +25,7 @@ namespace Ahoracado.UiTests
         }
 
         [TestMethod]
-        public void VerifyPageTitle()
+        public void WinGame()
         {
             _driver.Navigate().GoToUrl("https://localhost:44310/Home/Index");
             // Start Page
@@ -39,8 +39,16 @@ namespace Ahoracado.UiTests
             Assert.AreEqual("1", TxtLetrasAcertadas.Text);
         }
 
+        [TestMethod]
+        public void VerifyPageTitle()
+        {
+            _driver.Navigate().GoToUrl("https://localhost:44310/Home/Index");
+
+            Assert.AreEqual("Game - Ahorcado.Mvc", _driver.Title);
+        }
+
         [TestCleanup]
-        public void EdgeDriverCleanup()
+        public void ChromeDriverCleanup()
         {
             _driver.Quit();
         }

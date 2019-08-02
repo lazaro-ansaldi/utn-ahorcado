@@ -1,7 +1,6 @@
 ﻿using Ahorcado.Core;
 using Ahorcado.Mvc.Models;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using System;
 using System.Text;
 
