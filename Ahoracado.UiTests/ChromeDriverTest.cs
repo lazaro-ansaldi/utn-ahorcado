@@ -15,7 +15,7 @@ namespace Ahoracado.UiTests
         private IWebElement BtnStart => _driver.FindElementById("btnStartGame");
         private IWebElement TxtTryLetter => _driver.FindElementByName("LetterToTry");
         private IWebElement BtnTryLetter => _driver.FindElementById("btnStartGame");
-        private IWebElement TxtLetrasAcertadas => _driver.FindElementByName("LetterToTry");
+        private IWebElement TxtLetrasAcertadas => _driver.FindElementById("LetrasAcertadas");
         #endregion
 
         [TestInitialize]
@@ -28,6 +28,7 @@ namespace Ahoracado.UiTests
         public void WinGame()
         {
             _driver.Navigate().GoToUrl("https://localhost:44310/Home/Index");
+
             // Start Page
             TxtNombreJugador.SendKeys("Lazaro");
             TxtSecretWord.SendKeys("a");
