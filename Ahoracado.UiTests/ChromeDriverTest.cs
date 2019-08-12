@@ -8,6 +8,7 @@ namespace Ahoracado.UiTests
     public class ChromeDriverTest
     {
         private ChromeDriver _driver;
+        private static string CurrentPlayer => "Tester";
 
         #region Page Controls
         private IWebElement TxtNombreJugador => _driver.FindElementByName("PlayerName");
@@ -16,6 +17,7 @@ namespace Ahoracado.UiTests
         private IWebElement TxtTryLetter => _driver.FindElementByName("LetterToTry");
         private IWebElement BtnTryLetter => _driver.FindElementById("btnStartGame");
         private IWebElement TxtLetrasAcertadas => _driver.FindElementById("LetrasAcertadas");
+        private IWebElement TxtMessageResult => _driver.FindElementById("MessageResult");
         #endregion
 
         [TestInitialize]
@@ -27,10 +29,11 @@ namespace Ahoracado.UiTests
         [TestMethod]
         public void WinGame()
         {
+            
             _driver.Navigate().GoToUrl("https://localhost:44310/Home/Index");
 
             // Start Page
-            TxtNombreJugador.SendKeys("Lazaro");
+            TxtNombreJugador.SendKeys(CurrentPlayer);
             TxtSecretWord.SendKeys("a");
             BtnStart.Click();
 
@@ -38,6 +41,27 @@ namespace Ahoracado.UiTests
             BtnTryLetter.Click();
 
             Assert.AreEqual("1", TxtLetrasAcertadas.Text);
+            Assert.AreEqual($"El jugador: {CurrentPlayer} ha ganado la partida", TxtMessageResult.Text);
+        }
+
+
+        [TestMethod]
+        public void LostGame()
+        {
+            _driver.Navigate().GoToUrl("https://localhost:44310/Home/Index");
+
+            // Start Page
+            TxtNombreJugador.SendKeys(CurrentPlayer);
+            TxtSecretWord.SendKeys("Lost");
+            BtnStart.Click();
+
+            for (int i = 0; i < 7; i++)
+            {
+                TxtTryLetter.SendKeys("a");
+                BtnTryLetter.Click();
+            }
+
+            Assert.AreEqual($"El jugador: {CurrentPlayer} ha perdido la partida", TxtMessageResult.Text);
         }
 
         [TestMethod]

@@ -30,7 +30,7 @@ namespace Ahorcado.Mvc.Controllers
             if (manager.Finalizo)
             {
                 ViewBag.Message = manager.Resultado.Estado == EstadoJuego.Victoria ? $"El jugador: {manager.Resultado.Jugador.Nombre} ha ganado la partida" 
-                    : $"El jugador: {manager.Resultado.Jugador} ha perdido la partida";
+                    : $"El jugador: {manager.Resultado.Jugador.Nombre} ha perdido la partida";
             }
 
             MemoryStorageHelper.AddOrReplace($"{HttpContext.Session.Id}_{Constants.GameManagerKey}", manager);

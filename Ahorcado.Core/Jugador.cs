@@ -36,13 +36,13 @@ namespace Ahorcado.Core
             if (result.Count() == 0)
             {
                 CantidadDeErrores++;
-                LetrasArriesgadas.Add(letra, false);
+                //LetrasArriesgadas.Add(letra, false);
                 return false;
             }
             else
             {
                 CantidadDeAciertos += result.Count();
-                LetrasArriesgadas.Add(letra, true);
+                //LetrasArriesgadas.Add(letra, true);
                 return true;
             }
         }
