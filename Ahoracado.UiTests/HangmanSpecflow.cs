@@ -19,9 +19,11 @@ namespace Ahoracado.UiTests
             StartGame("Test");
         }
 
-        [When(@"I enter X as the typedLetter five times")]
+        [When(@"I enter X as the typedLetter seven times")]
         public void WhenIEnterXAsTheTypedLetterFiveTimes()
         {
+            ProbarLetra("x");
+            ProbarLetra("x");
             ProbarLetra("x");
             ProbarLetra("x");
             ProbarLetra("x");
