@@ -1,75 +1,99 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using TechTalk.SpecFlow;
 
 namespace Ahoracado.UiTests
 {
     [TestClass]
-    public class ChromeDriverTest
+    public class ChromeDriverTest : BaseTest
     {
-        private ChromeDriver _driver;
-        private static string CurrentPlayer => "Tester";
-
-        #region Page Controls
-        private IWebElement TxtNombreJugador => _driver.FindElementByName("PlayerName");
-        private IWebElement TxtSecretWord => _driver.FindElementByName("SecretWord");
-        private IWebElement BtnStart => _driver.FindElementById("btnStartGame");
-        private IWebElement TxtTryLetter => _driver.FindElementByName("LetterToTry");
-        private IWebElement BtnTryLetter => _driver.FindElementById("btnStartGame");
-        private IWebElement TxtLetrasAcertadas => _driver.FindElementById("LetrasAcertadas");
-        private IWebElement TxtMessageResult => _driver.FindElementById("MessageResult");
-        #endregion
-
         [TestInitialize]
-        public void EdgeDriverInitialize()
+        public void ChromeDriverInitialize()
         {
             _driver = new ChromeDriver(@"C:\Projects\UTN\utn-ahorcado\Ahoracado.UiTests\bin\Debug");
         }
 
         [TestMethod]
         public void WinGame()
-        {
-            
+        {  
             _driver.Navigate().GoToUrl("https://localhost:44310/Home/Index");
 
-            // Start Page
-            TxtNombreJugador.SendKeys(CurrentPlayer);
-            TxtSecretWord.SendKeys("a");
-            BtnStart.Click();
+            StartGame("hola");
 
-            TxtTryLetter.SendKeys("a");
-            BtnTryLetter.Click();
+            ProbarLetra("h");
+            ProbarLetra("o");
+            ProbarLetra("l");
+            ProbarLetra("a");
 
-            Assert.AreEqual("1", TxtLetrasAcertadas.Text);
             Assert.AreEqual($"El jugador: {CurrentPlayer} ha ganado la partida", TxtMessageResult.Text);
         }
 
-
         [TestMethod]
-        public void LostGame()
+        public void WinGameSameLetters()
         {
             _driver.Navigate().GoToUrl("https://localhost:44310/Home/Index");
 
-            // Start Page
-            TxtNombreJugador.SendKeys(CurrentPlayer);
-            TxtSecretWord.SendKeys("Lost");
-            BtnStart.Click();
+            StartGame("casa");
 
-            for (int i = 0; i < 7; i++)
-            {
-                TxtTryLetter.SendKeys("a");
-                BtnTryLetter.Click();
-            }
+            ProbarLetra("c");
+            ProbarLetra("s");
+            ProbarLetra("a");
+
+            Assert.AreEqual($"El jugador: {CurrentPlayer} ha ganado la partida", TxtMessageResult.Text);
+        }
+
+        [TestMethod]
+        public void WinGameWithWord()
+        {
+            _driver.Navigate().GoToUrl("https://localhost:44310/Home/Index");
+
+            StartGame("casa");
+
+            ProbarLetra("c");
+            ProbarLetra("l");
+            ProbarLetra("casa");
+
+            Assert.AreEqual($"El jugador: {CurrentPlayer} ha ganado la partida", TxtMessageResult.Text);
+        }
+
+        [TestMethod]
+        public void LostGameWithWord()
+        {
+            _driver.Navigate().GoToUrl("https://localhost:44310/Home/Index");
+
+            StartGame("casa");
+
+            ProbarLetra("c");
+            ProbarLetra("l");
+            ProbarLetra("sarasa");
 
             Assert.AreEqual($"El jugador: {CurrentPlayer} ha perdido la partida", TxtMessageResult.Text);
         }
 
         [TestMethod]
-        public void VerifyPageTitle()
+        public void WinGameWithAccents()
         {
             _driver.Navigate().GoToUrl("https://localhost:44310/Home/Index");
 
-            Assert.AreEqual("Game - Ahorcado.Mvc", _driver.Title);
+            StartGame("canción");
+
+            ProbarLetra("cAnCióN");
+
+            Assert.AreEqual($"El jugador: {CurrentPlayer} ha ganado la partida", TxtMessageResult.Text);
+        }
+
+        [TestMethod]
+        public void LostGame()
+        {
+            _driver.Navigate().GoToUrl("https://localhost:44310/Home/Index");
+            StartGame("lost");
+
+            for (int i = 0; i < 7; i++)
+            {
+                ProbarLetra("a");
+            }
+
+            Assert.AreEqual($"El jugador: {CurrentPlayer} ha perdido la partida", TxtMessageResult.Text);
         }
 
         [TestCleanup]

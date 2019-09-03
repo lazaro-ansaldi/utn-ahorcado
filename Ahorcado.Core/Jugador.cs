@@ -17,7 +17,7 @@ namespace Ahorcado.Core
         public Jugador(string nombre, string palabra)
         {
             Nombre = nombre;
-            PalabraSecreta = palabra.ToUpperInvariant();
+            PalabraSecreta = GetSanitizedString(palabra);
             LetrasArriesgadas = new Dictionary<string, bool>();
         }
 
@@ -31,7 +31,7 @@ namespace Ahorcado.Core
             //    return resultadoLetra ? LetraArriesgada.PreviamenteAcertada : LetraArriesgada.PreviamenteFallida;
             //}
 
-            var result = PalabraSecreta.Where(x => x.ToString() == letra.ToUpperInvariant());
+            var result = PalabraSecreta.Where(x => x.ToString() == GetSanitizedString(letra));
 
             if (result.Count() == 0)
             {
@@ -50,7 +50,13 @@ namespace Ahorcado.Core
         // Refactor: el input es un char
         public bool ArriesgarPalabra(string palabra)
         {
-            return palabra.ToUpperInvariant() == PalabraSecreta;
+            return GetSanitizedString(palabra) == PalabraSecreta;
+        }
+
+        private string GetSanitizedString(string input)
+        {
+            return input.RemoveDiacritics()
+                .ToUpperInvariant();
         }
     }
 }

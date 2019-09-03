@@ -32,8 +32,6 @@ namespace Ahorcado.Tests
             Assert.IsFalse(validarLetra);
         }
 
-
-
         [TestMethod]
         public void ProbarVictoria()
         {

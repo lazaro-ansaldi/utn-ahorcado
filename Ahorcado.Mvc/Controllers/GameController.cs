@@ -7,12 +7,13 @@ namespace Ahorcado.Mvc.Controllers
 {
     public class GameController : Controller
     {
-        private GameManager Manager => MemoryStorageHelper.GetAs<GameManager>($"{HttpContext.Session.Id}_{Constants.GameManagerKey}");
+        private GameManager GetManager() => MemoryStorageHelper.GetAs<GameManager>($"{HttpContext.Session.Id}_{Constants.GameManagerKey}");
 
         public IActionResult Index()
         {
-            ViewBag.Finalizo = Manager.Finalizo;
-            ViewBag.LetrasAcertadas = Manager.LetrasAcertadas;
+            var manager = GetManager();
+            ViewBag.Finalizo = manager.Finalizo;
+            ViewBag.LetrasAcertadas = manager.LetrasAcertadas;
 
             return View("~/Views/Game.cshtml");
         }
@@ -20,12 +21,19 @@ namespace Ahorcado.Mvc.Controllers
         [HttpPost]
         public IActionResult TryLetter(GameModel model)
         {
-            var manager = Manager;
+            var manager = GetManager();
 
-            manager.ProbarLetra(model.LetterToTry);
+            if (model.LetterToTry.Length == 1)
+            {
+                manager.ProbarLetra(model.LetterToTry);
+            }
+            else
+            {
+                manager.ArriesgarPalabra(model.LetterToTry);
+            }
 
-            ViewBag.Finalizo = Manager.Finalizo;
-            ViewBag.LetrasAcertadas = Manager.LetrasAcertadas;
+            ViewBag.Finalizo = manager.Finalizo;
+            ViewBag.LetrasAcertadas = manager.LetrasAcertadas;
 
             if (manager.Finalizo)
             {

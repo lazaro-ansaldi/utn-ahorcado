@@ -38,12 +38,11 @@
                         <div class="col-sm-3">
                             @Html.TextBoxFor(m => m.LetterToTry, new Dictionary<String, object>
                                 {
-                                    { "class", "form-control" },
-                                    { "maxlength", "1" }
+                                    { "class", "form-control" }
                                 })
                         </div>
                         <div class="col-sm-2">
-                            <input type="submit" id="btnStartGame" value="Probar" class="btn btn-info" />
+                            <input type="submit" id="btnStartGame" value="Probar" class="btn btn-info" onclick="isLetter(evt)"/>
                         </div>
                     </div>
                 </div>
@@ -51,4 +50,20 @@
         }
     </div>
 </div>
+
+<script>
+    function TryLetter_Click() {
+        console.log($('#LetterToTry').text);
+        }
+
+
+    function isLetter(evt) {
+    evt = (evt) ? evt : window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if ((charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122) || (charCode >= 160 && charCode <= 165)) {
+        return true;
+    }
+    return false;
+}
+</script>
 
