@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace Ahoracado.UiTests
+namespace Ahoracado.UiTests.Specflow.WinRepeatedLetters
 {
     using TechTalk.SpecFlow;
     using System;
@@ -20,7 +20,7 @@ namespace Ahoracado.UiTests
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.1.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute()]
-    public partial class HangmanFeature
+    public partial class HangmanWinRepeatedLettersSpecflowFeature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -29,7 +29,7 @@ namespace Ahoracado.UiTests
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "Hangman.feature"
+#line 1 "HangmanWinRepeatedLettersSpecflow.feature"
 #line hidden
         
         public virtual Microsoft.VisualStudio.TestTools.UnitTesting.TestContext TestContext
@@ -48,7 +48,7 @@ namespace Ahoracado.UiTests
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Hangman", "\tIn order to play the game\r\n\tAs a player\r\n\tI want to guess a word and know if I w" +
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "HangmanWinRepeatedLettersSpecflow", "\tIn order to play the game\r\n\tAs a player\r\n\tI want to guess a word and know if I w" +
                     "on or not", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
@@ -64,9 +64,9 @@ namespace Ahoracado.UiTests
         public virtual void TestInitialize()
         {
             if (((testRunner.FeatureContext != null) 
-                        && (testRunner.FeatureContext.FeatureInfo.Title != "Hangman")))
+                        && (testRunner.FeatureContext.FeatureInfo.Title != "HangmanWinRepeatedLettersSpecflow")))
             {
-                global::Ahoracado.UiTests.HangmanFeature.FeatureSetup(null);
+                global::Ahoracado.UiTests.Specflow.WinRepeatedLetters.HangmanWinRepeatedLettersSpecflowFeature.FeatureSetup(null);
             }
         }
         
@@ -93,16 +93,16 @@ namespace Ahoracado.UiTests
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Loose the game")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Hangman")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("LooseScenario")]
-        public virtual void LooseTheGame()
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Win the game with letters")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "HangmanWinRepeatedLettersSpecflow")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("WordWinRepeatedLettersScenario")]
+        public virtual void WinTheGameWithLetters()
         {
             string[] tagsOfScenario = new string[] {
-                    "LooseScenario"};
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Loose the game", null, new string[] {
-                        "LooseScenario"});
-#line 7
+                    "WordWinRepeatedLettersScenario"};
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Win the game with letters", null, new string[] {
+                        "WordWinRepeatedLettersScenario"});
+#line 8
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -122,14 +122,20 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 8
- testRunner.Given("I have entered Looser as the wordToGuess", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
 #line 9
- testRunner.When("I enter X as the typedLetter seven times", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Given("I have entered fees as the wordToGuess", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 10
- testRunner.Then("I should be told that I lost", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("I try the letter f", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 11
+ testRunner.When("I try the letter e", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 12
+ testRunner.When("I try the letter s", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 13
+ testRunner.Then("I should be told that I win the game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

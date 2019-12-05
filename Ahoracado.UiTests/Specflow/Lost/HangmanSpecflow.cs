@@ -2,7 +2,7 @@
 using OpenQA.Selenium.Chrome;
 using TechTalk.SpecFlow;
 
-namespace Ahoracado.UiTests
+namespace Ahoracado.UiTests.Specflow.Lost
 {
     [Binding]
     public class HangmanSpecflow : BaseTest

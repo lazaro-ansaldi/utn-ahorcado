@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace Ahoracado.UiTests
+namespace Ahoracado.UiTests.Specflow.WinWithLetters
 {
     using TechTalk.SpecFlow;
     using System;
@@ -66,7 +66,7 @@ namespace Ahoracado.UiTests
             if (((testRunner.FeatureContext != null) 
                         && (testRunner.FeatureContext.FeatureInfo.Title != "HangmanWinWithLettersSpecflow")))
             {
-                global::Ahoracado.UiTests.HangmanWinWithLettersSpecflowFeature.FeatureSetup(null);
+                global::Ahoracado.UiTests.Specflow.WinWithLetters.HangmanWinWithLettersSpecflowFeature.FeatureSetup(null);
             }
         }
         
