@@ -95,13 +95,13 @@ namespace Ahoracado.UiTests.Specflow.WinWithLetters
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Win the game with letters")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "HangmanWinWithLettersSpecflow")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("WinScenario")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("WinWithLettersScenario")]
         public virtual void WinTheGameWithLetters()
         {
             string[] tagsOfScenario = new string[] {
-                    "WinScenario"};
+                    "WinWithLettersScenario"};
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Win the game with letters", null, new string[] {
-                        "WinScenario"});
+                        "WinWithLettersScenario"});
 #line 7
 this.ScenarioInitialize(scenarioInfo);
 #line hidden

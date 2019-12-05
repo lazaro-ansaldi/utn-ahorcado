@@ -3,7 +3,7 @@
 	As a player
 	I want to guess a word and know if I won or not
 
-@WinScenario
+@WinWithLettersScenario
 Scenario: Win the game with letters
 	Given I have entered Test as the wordToGuess
 	When I enter t as the first typedLetter
