@@ -5,7 +5,7 @@ using TechTalk.SpecFlow;
 namespace Ahoracado.UiTests
 {
     [Binding]
-    public sealed class HangmanWinWithLettersSpecflow : BaseTest
+    public class HangmanWinRepeatedLettersSpecflow : BaseTest
     {
         [BeforeScenario]
         public void ChromeDriverInitialize()
@@ -13,38 +13,32 @@ namespace Ahoracado.UiTests
             _driver = new ChromeDriver(@"C:\Projects\UTN\utn-ahorcado\Ahoracado.UiTests\bin\Debug");
         }
 
-        [Given(@"I have entered Test as the wordToGuess")]
+        [Given(@"I have entered fees as the wordToGuess")]
         public void GivenIHaveEnteredTestAsTheWordToGuess()
         {
             _driver.Navigate().GoToUrl("https://localhost:44310/Home/Index");
-            StartGame("Test");
+            StartGame("fees");
         }
 
-        [When(@"I enter t as the first typedLetter")]
-        public void WhenIEnterTheFirstLetter()
+        [When(@"I try the letter f")]
+        public void WhenIEnterFAsTheFirstLetter()
         {
-            ProbarLetra("t");
+            ProbarLetra("f");
         }
 
-        [When(@"I enter e as the second typedLetter")]
-        public void WhenIEnterTheSecondLetter()
+        [When(@"I try the letter e")]
+        public void WhenIEnterEAsTheSecondLetter()
         {
             ProbarLetra("e");
         }
 
-        [When(@"I enter s as the third typedLetter")]
-        public void WhenIEnterTheThirdLetter()
+        [When(@"I try the letter s")]
+        public void WhenIEnterSAsTheFirstLetter()
         {
             ProbarLetra("s");
         }
 
-        [When(@"I enter s as the fourth typedLetter")]
-        public void WhenIEnterTheFourthLetter()
-        {
-            ProbarLetra("t");
-        }
-
-        [Then(@"I should be told that I win")]
+        [Then(@"I should be told that I win the game")]
         public void ThenIShouldBeToldThatILost()
         {
             Assert.AreEqual($"El jugador: {CurrentPlayer} ha ganado la partida", TxtMessageResult.Text);

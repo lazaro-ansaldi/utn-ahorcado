@@ -5,6 +5,6 @@
 
 @LooseScenario
 Scenario: Loose the game
-	Given I have entered Test as the wordToGuess
+	Given I have entered Looser as the wordToGuess
 	When I enter X as the typedLetter seven times
 	Then I should be told that I lost

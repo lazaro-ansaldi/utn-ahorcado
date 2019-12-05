@@ -13,10 +13,11 @@ namespace Ahoracado.UiTests
             _driver = new ChromeDriver(@"C:\Projects\UTN\utn-ahorcado\Ahoracado.UiTests\bin\Debug");
         }
 
-        [Given(@"I have entered Test as the wordToGuess")]
+        [Given(@"I have entered Looser as the wordToGuess")]
         public void GivenIHaveEnteredTestAsTheWordToGuess()
         {
-            StartGame("Test");
+            _driver.Navigate().GoToUrl("https://localhost:44310/Home/Index");
+            StartGame("Looser");
         }
 
         [When(@"I enter X as the typedLetter seven times")]
