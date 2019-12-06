@@ -38,7 +38,7 @@ namespace Ahoracado.UiTests.Specflow.WinWithLetters
             ProbarLetra("s");
         }
 
-        [When(@"I enter s as the fourth typedLetter")]
+        [When(@"I enter t as the fourth typedLetter")]
         public void WhenIEnterTheFourthLetter()
         {
             ProbarLetra("t");
