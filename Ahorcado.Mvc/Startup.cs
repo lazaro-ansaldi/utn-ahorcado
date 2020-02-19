@@ -14,6 +14,7 @@ namespace Ahorcado.Mvc
 {
     public class Startup
     {
+        // Do Nothing
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
