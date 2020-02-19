@@ -33,3 +33,8 @@ steps:
     command: test
     projects: '**/Ahorcado.Tests/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
+
+- task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: 'JaCoCo'
+    summaryFileLocation: 'CoverageReport.xml'
